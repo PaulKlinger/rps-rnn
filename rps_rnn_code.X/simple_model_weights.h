@@ -16,7 +16,7 @@ extern "C" {
     struct quantized_matrix W_input;
     struct quantized_matrix W_recurrent;
     struct quantized_matrix W_output;
-    struct quantized_matrix b_input;
+    struct quantized_matrix b_state;
     struct float_matrix b_output;
 
 

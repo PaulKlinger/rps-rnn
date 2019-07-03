@@ -10,6 +10,7 @@
 #include "mcc_generated_files/include/pin_manager.h"
 #include <util/delay.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "matrix.h"
 #include "simple_model_weights.h"
@@ -25,6 +26,7 @@ int main(void)
 {
     /* Initializes MCU, drivers and middleware */
     SYSTEM_Initialize();
+    
     
     
 

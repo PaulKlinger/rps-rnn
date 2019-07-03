@@ -35,8 +35,8 @@ uint8_t b_state_data[] = {
          227,  97,  92, 105, 149,   0, 105, 217, 255, 185};
 struct quantized_matrix b_state = {
     .data = b_state_data,
-    .rows = 10,
-    .cols = 1,
+    .rows = 1,
+    .cols = 10,
     .scale = 0.002377917719822304,
     .offset = -0.2683249
 };
@@ -45,7 +45,7 @@ uint8_t W_output_data[] = {
          255, 184,  89,  91,  68, 157, 171, 108, 135, 139, 165, 140, 163,
           79, 221, 148, 189, 103,   0, 102,  60, 196,  98, 135, 117, 209,
          158,   2, 100,  88};
-struct quantized_matrix W_output_state = {
+struct quantized_matrix W_output = {
     .data = W_output_data,
     .rows = 10,
     .cols = 3,
@@ -57,6 +57,6 @@ float b_output_data[] = {
          -0.02720571, -0.03758323, -0.16626628};
 struct float_matrix b_output = {
     .data = b_output_data,
-    .rows = 3,
-    .cols = 1,
+    .rows = 1,
+    .cols = 3,
 };
