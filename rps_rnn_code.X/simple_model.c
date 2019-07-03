@@ -61,36 +61,32 @@ void swap_state_vectors() {
 rps simple_model_predict(rps opponent_move, float temperature) {
     set_input(opponent_move);
     // multiply previous state vector with recurrent kernel
-    mult_float_quant(&state_vector, &W_recurrent, &intermediate_state_vector);
+    m_mult_fq(&state_vector, &W_recurrent, &intermediate_state_vector);
     // store result in state_vector
     swap_state_vectors();
     
     // multiply input with input kernel
-    mult_float_quant(&input_vector, &W_input, &intermediate_state_vector);
+    m_mult_fq(&input_vector, &W_input, &intermediate_state_vector);
     
     // add both results and add bias
-    add_float_float(&state_vector, &intermediate_state_vector, &state_vector);
-    add_float_quant(&state_vector, &b_state, &state_vector);
+    m_add_ff(&state_vector, &intermediate_state_vector, &state_vector);
+    m_add_fq(&state_vector, &b_state, &state_vector);
     
     //apply activation function
-    tanh_elementwise(&state_vector);
+    m_tanh_f(&state_vector);
     
     //multiply with output kernel
-    mult_float_quant(&state_vector, &W_output, &output_vector);
+    m_mult_fq(&state_vector, &W_output, &output_vector);
 
     //add output bias
-    add_float_float(&output_vector, &b_output, &output_vector);
+    m_add_ff(&output_vector, &b_output, &output_vector);
     
     //multiply logits with temperature...
-    mult_float_scalar(&output_vector, 1 / temperature);
+    m_mult_fs(&output_vector, 1 / temperature);
     //... and apply softmax to get normalized probabilities
-    softmax(&output_vector);
+    m_softmax_f(&output_vector);
     
-    volatile float out_0 = output_vector.data[0];
-    volatile float out_1 = output_vector.data[1];
-    volatile float out_2 = output_vector.data[2];
-    
-    rps predicted_opponent_move = sample(&output_vector);
+    rps predicted_opponent_move = m_sample_f(&output_vector);
     
     switch (predicted_opponent_move) {
         case ROCK: // predicted rock, we play paper
