@@ -75,6 +75,16 @@ rps simple_model_predict(rps opponent_move, float temperature) {
     //... and apply softmax to get normalized probabilities
     softmax(&output_vector);
     
-    our_last_move = sample(&output_vector);
+    switch (sample(&output_vector)) {
+        case 0: // predicted rock, we play paper
+            our_last_move = PAPER;
+            break;
+        case 1: // predicted paper, we play scissors
+            our_last_move = SCISSORS;
+            break;
+        case 2: // predicted scissors, we play rock
+            our_last_move = SCISSORS;
+            break;
+    };
     return our_last_move;
 };

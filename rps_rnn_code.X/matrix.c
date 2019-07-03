@@ -80,6 +80,7 @@ uint8_t sample(struct float_matrix *probs){
     // sample from a discrete probability distribution given by a matrix
     // of dimensions (1, n). Assumes the entries of probs sum to 1.
     
+    // random float between 0 and 1
     float r = random() / ((float) RANDOM_MAX);
     for (uint8_t i=0; i < probs->cols; i++){
         r -= probs->data[i];
@@ -87,5 +88,5 @@ uint8_t sample(struct float_matrix *probs){
             return i;
         }
     }
-    return 0;
+    return probs->cols - 1;
 };
