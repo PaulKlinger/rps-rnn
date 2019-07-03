@@ -39,6 +39,12 @@ void add_float_quant(struct float_matrix *m1,
                     struct quantized_matrix *m2, 
                     struct float_matrix *res);
 
+void tanh_elementwise(struct float_matrix *m);
+void mult_float_scalar(struct float_matrix *m, float x);
+
+void softmax(struct float_matrix *m);
+uint8_t sample(struct float_matrix *probs);
+
 
 #ifdef	__cplusplus
 }

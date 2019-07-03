@@ -28,7 +28,7 @@ int main(void)
     
     
 
-    
+    simple_model_predict(START, 1.0);
     
     /* Replace with your application code */
     while (1){
