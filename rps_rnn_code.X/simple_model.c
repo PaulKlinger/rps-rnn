@@ -19,15 +19,15 @@ struct float_matrix state_vector = {
     .cols = 10,
 };
 
-volatile float intermediate_state_vector_data[10];
-volatile struct float_matrix intermediate_state_vector = {
+float intermediate_state_vector_data[10];
+struct float_matrix intermediate_state_vector = {
     .data = intermediate_state_vector_data,
     .rows = 1,
     .cols = 10,
 };
 
-volatile float output_vector_data[3];
-volatile struct float_matrix output_vector = {
+float output_vector_data[3];
+struct float_matrix output_vector = {
     .data = output_vector_data,
     .rows = 1,
     .cols = 3,
@@ -86,15 +86,17 @@ rps simple_model_predict(rps opponent_move, float temperature) {
     //... and apply softmax to get normalized probabilities
     softmax(&output_vector);
     
-    switch (sample(&output_vector)) {
-        case 0: // predicted rock, we play paper
+    rps predicted_opponent_move = sample(&output_vector);
+    
+    switch (predicted_opponent_move) {
+        case ROCK: // predicted rock, we play paper
             our_last_move = PAPER;
             break;
-        case 1: // predicted paper, we play scissors
+        case PAPER: // predicted paper, we play scissors
             our_last_move = SCISSORS;
             break;
-        case 2: // predicted scissors, we play rock
-            our_last_move = SCISSORS;
+        case SCISSORS: // predicted scissors, we play rock
+            our_last_move = ROCK;
             break;
     };
     return our_last_move;

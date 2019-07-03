@@ -28,7 +28,8 @@ int main(void)
     SYSTEM_Initialize();
     
     
-    
+    srandom(42);
+    random();
 
     volatile rps first_move = simple_model_predict(START, 1.0);
     
