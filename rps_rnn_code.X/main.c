@@ -31,7 +31,7 @@ int main(void)
     srandom(42);
     random();
 
-    volatile rps first_move = simple_model_predict(START, 1.0);
+    volatile rps first_move = simple_model_predict(START, 0.1);
     
     /* Replace with your application code */
     while (1){

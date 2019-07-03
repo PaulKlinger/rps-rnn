@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
 
 #include "matrix.h"
 
@@ -65,11 +66,22 @@ void mult_float_scalar(struct float_matrix *m, float x) {
     }
 };
 
+float m_max(struct float_matrix *m) {
+    float res = -FLT_MAX;
+    for (uint8_t i=0; i < m->rows * m->cols; i++) {
+        if (m->data[i] > res) {
+            res = m->data[i];
+        };
+    };
+    return res;
+}
+
 void softmax(struct float_matrix *m) {
     // softmax: m = exp(m)/sum(exp(m))
     float sum = 0;
+    float max_value = m_max(m);
     for (uint8_t i=0; i < m->rows * m-> cols; i++) {
-        m->data[i] = exp(m->data[i]);
+        m->data[i] = exp(m->data[i] - max_value);
         sum += m->data[i];
     }
     for (uint8_t i=0; i < m->rows * m-> cols; i++) {

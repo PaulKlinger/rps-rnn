@@ -82,9 +82,13 @@ rps simple_model_predict(rps opponent_move, float temperature) {
     add_float_float(&output_vector, &b_output, &output_vector);
     
     //multiply logits with temperature...
-    mult_float_scalar(&output_vector, temperature);
+    mult_float_scalar(&output_vector, 1 / temperature);
     //... and apply softmax to get normalized probabilities
     softmax(&output_vector);
+    
+    volatile float out_0 = output_vector.data[0];
+    volatile float out_1 = output_vector.data[1];
+    volatile float out_2 = output_vector.data[2];
     
     rps predicted_opponent_move = sample(&output_vector);
     
@@ -97,6 +101,8 @@ rps simple_model_predict(rps opponent_move, float temperature) {
             break;
         case SCISSORS: // predicted scissors, we play rock
             our_last_move = ROCK;
+            break;
+        case START: // should never happen
             break;
     };
     return our_last_move;
