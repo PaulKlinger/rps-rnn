@@ -81,7 +81,7 @@ rps simple_model_predict(rps opponent_move, float temperature) {
     //add output bias
     m_add_ff(&output_vector, &b_output, &output_vector);
     
-    //multiply logits with temperature...
+    //divide logits by temperature...
     m_mult_fs(&output_vector, 1 / temperature);
     //... and apply softmax to get normalized probabilities
     m_softmax_f(&output_vector);
