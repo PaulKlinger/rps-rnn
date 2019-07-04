@@ -57,23 +57,41 @@ void swap_state_vectors() {
     intermediate_state_vector = temp;
 }
 
+void swap_matrices(struct float_matrix *a, struct float_matrix *b) {
+    // swap float matrices a and b
+    struct float_matrix temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void recurrent_layer(struct float_matrix *input_vec,
+                     struct float_matrix *state_vec,
+                     struct float_matrix *temp_state_vec,
+                     const struct quantized_matrix *W_in,
+                     const struct quantized_matrix *W_rec,
+                     const struct quantized_matrix *bias) {
+    // multiply previous state vector with recurrent kernel
+    m_mult_fq(state_vec, W_rec, temp_state_vec);
+    // store result in state_vector
+    swap_matrices(state_vec, temp_state_vec);
+    
+    // multiply input with input kernel
+    m_mult_fq(input_vec, W_in, temp_state_vec);
+    
+    // add both results and add bias
+    m_add_ff(state_vec, temp_state_vec, state_vec);
+    m_add_fq(state_vec, bias, state_vec);
+    
+    //apply activation function
+    m_softsign_f(state_vec);
+}
+
 
 rps simple_model_predict(rps opponent_move, float temperature) {
     set_input(opponent_move);
-    // multiply previous state vector with recurrent kernel
-    m_mult_fq(&state_vector, &W_recurrent, &intermediate_state_vector);
-    // store result in state_vector
-    swap_state_vectors();
-    
-    // multiply input with input kernel
-    m_mult_fq(&input_vector, &W_input, &intermediate_state_vector);
-    
-    // add both results and add bias
-    m_add_ff(&state_vector, &intermediate_state_vector, &state_vector);
-    m_add_fq(&state_vector, &b_state, &state_vector);
-    
-    //apply activation function
-    m_tanh_f(&state_vector);
+
+    recurrent_layer(&input_vector, &state_vector, &intermediate_state_vector,
+                    &W_input, &W_recurrent, &b_state);
     
     //multiply with output kernel
     m_mult_fq(&state_vector, &W_output, &output_vector);
