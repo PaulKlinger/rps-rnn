@@ -23,28 +23,29 @@ struct float_matrix {
     uint8_t rows, cols;
 };
 
-void m_mult_qf(struct quantized_matrix *m1,
-                      struct float_matrix *m2,
-                      struct float_matrix *res);
+void m_mult_qf(const struct quantized_matrix *m1,
+               const struct float_matrix *m2,
+               struct float_matrix *res);
 
-void m_mult_fq(struct float_matrix *m1,
-                      struct quantized_matrix *m2,
-                      struct float_matrix *res);
+void m_mult_fq(const struct float_matrix *m1,
+               const struct quantized_matrix *m2,
+               struct float_matrix *res);
 
-void m_add_ff(struct float_matrix *m1,
-                     struct float_matrix *m2,
-                     struct float_matrix *res);
+void m_add_ff(const struct float_matrix *m1,
+              const struct float_matrix *m2,
+              struct float_matrix *res);
 
-void m_add_fq(struct float_matrix *m1,
-                    struct quantized_matrix *m2, 
-                    struct float_matrix *res);
+void m_add_fq(const struct float_matrix *m1,
+              const struct quantized_matrix *m2, 
+              struct float_matrix *res);
 
 void m_tanh_f(struct float_matrix *m);
+void m_softsign_f(struct float_matrix *m);
 void m_mult_fs(struct float_matrix *m, float x);
 
 float m_max_f(struct float_matrix *m);
 void m_softmax_f(struct float_matrix *m);
-uint8_t m_sample_f(struct float_matrix *probs);
+uint8_t m_sample_f(const struct float_matrix *probs);
 
 
 #ifdef	__cplusplus

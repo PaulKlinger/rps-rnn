@@ -5,9 +5,9 @@
 
 #include "matrix.h"
 
-void m_mult_qf(struct quantized_matrix *m1,
-                      struct float_matrix *m2,
-                      struct float_matrix *res) {
+void m_mult_qf(const struct quantized_matrix *m1,
+               const struct float_matrix *m2,
+               struct float_matrix *res) {
     // Matrix multiplies quantized_matrix m1 and float_matrix m2,
     // writing the result to the float_matrix res.
     // res cannot be the same as m2
@@ -26,9 +26,9 @@ void m_mult_qf(struct quantized_matrix *m1,
     };
 };
 
-void m_mult_fq(struct float_matrix *m1,
-                      struct quantized_matrix *m2,
-                      struct float_matrix *res) {
+void m_mult_fq(const struct float_matrix *m1,
+               const struct quantized_matrix *m2,
+               struct float_matrix *res) {
     // Matrix multiplies float_matrix m1 and quantized_matrix m2,
     // writing the result to the float_matrix res.
     // res cannot be the same as m1
@@ -51,7 +51,8 @@ void m_mult_fq(struct float_matrix *m1,
     };
 };
 
-void m_add_ff(struct float_matrix *m1, struct float_matrix *m2, struct float_matrix *res) {
+void m_add_ff(const struct float_matrix *m1,
+              const struct float_matrix *m2, struct float_matrix *res) {
     // Adds float_matrices m1, m2, writing the result to float_matrix res
     // res can be one of m1, m2
     for (uint8_t i=0; i < m1->rows * m1->cols; i++) {
@@ -59,7 +60,9 @@ void m_add_ff(struct float_matrix *m1, struct float_matrix *m2, struct float_mat
     };
 };
 
-void m_add_fq(struct float_matrix *m1, struct quantized_matrix *m2, struct float_matrix *res) {
+void m_add_fq(const struct float_matrix *m1,
+              const struct quantized_matrix *m2,
+              struct float_matrix *res) {
     // Adds float_matrix m1 and quantized_matrix m2,
     // writing the result to float_matrix res
     // res can be m1
@@ -72,6 +75,13 @@ void m_tanh_f(struct float_matrix *m) {
     // Applies elementwise tanh to float_matrix m. Works inplace.
     for (uint8_t i=0; i < m->rows * m-> cols; i++) {
         m->data[i] = tanh(m->data[i]);
+    }
+};
+
+void m_softsign_f(struct float_matrix *m) {
+    // Applies elementwise softsign to float_matrix m. Works inplace.
+    for (uint8_t i=0; i < m->rows * m-> cols; i++) {
+        m->data[i] = m->data[i] / (1 + fabs(m->data[i]));
     }
 };
 
@@ -109,7 +119,7 @@ void m_softmax_f(struct float_matrix *m) {
     }
 };
 
-uint8_t m_sample_f(struct float_matrix *probs){
+uint8_t m_sample_f(const struct float_matrix *probs){
     // sample from a discrete probability distribution given by
     // float_matrix probs of dimensions (1, n).
     // Assumes the entries of probs sum to 1.

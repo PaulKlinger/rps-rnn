@@ -13,11 +13,11 @@
 extern "C" {
 #endif
 
-    struct quantized_matrix W_input;
-    struct quantized_matrix W_recurrent;
-    struct quantized_matrix W_output;
-    struct quantized_matrix b_state;
-    struct float_matrix b_output;
+    const struct quantized_matrix W_input;
+    const struct quantized_matrix W_recurrent;
+    const struct quantized_matrix W_output;
+    const struct quantized_matrix b_state;
+    const struct float_matrix b_output;
 
 
 #ifdef	__cplusplus
