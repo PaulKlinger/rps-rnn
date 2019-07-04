@@ -32,17 +32,21 @@ void m_mult_fq(struct float_matrix *m1,
     // Matrix multiplies float_matrix m1 and quantized_matrix m2,
     // writing the result to the float_matrix res.
     // res cannot be the same as m1
+    
+    // Pre-calculate offset/scale so we can pull the multiplication with
+    // the scale factor out of the inner loop
+    float offset_over_scale = m2->offset / m2->scale;
     float res_entry;
     for (uint8_t row=0; row < m1->rows; row++) {
         for (uint8_t col=0; col < m2->cols; col++) {
             res_entry = 0;
             for (uint8_t i=0; i<m1->cols; i++) {
                 // m1[row, i] * m2[i, col]
-                res_entry += m1->data[row * m1->cols + i] * (m2->data[i * m2->cols + col] * m2->scale + m2->offset);
+                res_entry += m1->data[row * m1->cols + i] * (m2->data[i * m2->cols + col] + offset_over_scale);
             }
             // res is shape (m1->rows, m2->cols)
             // res[row, col]
-            res->data[row * m2->cols + col] = res_entry;
+            res->data[row * m2->cols + col] = res_entry * m2->scale;
         };
     };
 };
