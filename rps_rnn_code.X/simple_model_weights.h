@@ -13,10 +13,16 @@
 extern "C" {
 #endif
 
-    const struct quantized_matrix W_input;
-    const struct quantized_matrix W_recurrent;
+    const struct quantized_matrix l1_W_input;
+    const struct quantized_matrix l1_W_recurrent;
+    const struct quantized_matrix l1_b_state;
+    const struct quantized_matrix l2_W_input;
+    const struct quantized_matrix l2_W_recurrent;
+    const struct quantized_matrix l2_b_state;
+    const struct quantized_matrix l3_W_input;
+    const struct quantized_matrix l3_W_recurrent;
+    const struct quantized_matrix l3_b_state;
     const struct quantized_matrix W_output;
-    const struct quantized_matrix b_state;
     const struct float_matrix b_output;
 
 
