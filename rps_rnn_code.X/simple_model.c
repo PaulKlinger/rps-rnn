@@ -79,31 +79,11 @@ void recurrent_layer(struct float_matrix *input_vec,
                      const struct quantized_matrix *W_in,
                      const struct quantized_matrix *W_rec,
                      const struct quantized_matrix *bias) {
-    volatile float state_0 = state_vec->data[0];
-    volatile float state_1 = state_vec->data[1];
-    volatile float state_2 = state_vec->data[2];
-    volatile float state_3 = state_vec->data[3];
-    volatile float state_4 = state_vec->data[4];
     // multiply previous state vector with recurrent kernel
     m_mult_fq(state_vec, W_rec, temp_state_vec);
-    volatile float t_state_0 = temp_state_vec->data[0];
-    volatile float t_state_1 = temp_state_vec->data[1];
-    volatile float t_state_2 = temp_state_vec->data[2];
-    volatile float t_state_3 = temp_state_vec->data[3];
-    volatile float t_state_4 = temp_state_vec->data[4];
     // store result in state_vector
     swap_matrices(state_vec, temp_state_vec);
-    state_0 = state_vec->data[0];
-    state_1 = state_vec->data[1];
-    state_2 = state_vec->data[2];
-    state_3 = state_vec->data[3];
-    state_4 = state_vec->data[4];
     
-    volatile float input_vec_0 = input_vec->data[0];
-    volatile float input_vec_1 = input_vec->data[1];
-    volatile float input_vec_2 = input_vec->data[2];
-    volatile float input_vec_3 = input_vec->data[3];
-    volatile float input_vec_4 = input_vec->data[4];
     // multiply input with input kernel
     m_mult_fq(input_vec, W_in, temp_state_vec);
     
@@ -121,21 +101,11 @@ rps simple_model_predict(rps opponent_move, float temperature) {
 
     recurrent_layer(&input_vector, &l1_state_vector, &temp_state_vector,
                     &l1_W_input, &l1_W_recurrent, &l1_b_state);
-    volatile float l1_state_0 = l1_state_vector.data[0];
-    volatile float l1_state_1 = l1_state_vector.data[1];
-    volatile float l1_state_2 = l1_state_vector.data[2];
-    volatile float l1_state_3 = l1_state_vector.data[3];
-    volatile float l1_state_4 = l1_state_vector.data[4];
     recurrent_layer(&l1_state_vector, &l2_state_vector, &temp_state_vector,
     
                     &l2_W_input, &l2_W_recurrent, &l2_b_state);
     recurrent_layer(&l2_state_vector, &l3_state_vector, &temp_state_vector,
                     &l3_W_input, &l3_W_recurrent, &l3_b_state);
-    volatile float l3_state_0 = l3_state_vector.data[0];
-    volatile float l3_state_1 = l3_state_vector.data[1];
-    volatile float l3_state_2 = l3_state_vector.data[2];
-    volatile float l3_state_3 = l3_state_vector.data[3];
-    volatile float l3_state_4 = l3_state_vector.data[4];
     
     
     //multiply with output kernel
