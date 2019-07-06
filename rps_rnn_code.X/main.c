@@ -34,28 +34,79 @@
 // paper: PA3
 // scissors: PA1
 // start: PA2
+static inline bool start_pressed() {return !IO_PA2_get_level();}
+static inline bool rock_pressed() {return !IO_PA4_get_level();}
+static inline bool paper_pressed() {return !IO_PA3_get_level();}
+static inline bool scissors_pressed() {return !IO_PA1_get_level();}
+
+static inline void set_led_rock(bool new_state) {IO_PB0_set_level(new_state);}
+static inline void set_led_paper(bool new_state) {IO_PB1_set_level(new_state);}
+static inline void set_led_scissors(bool new_state) {IO_PB2_set_level(new_state);}
+
+static void set_all_leds(bool new_state) {
+    set_led_rock(new_state);
+    set_led_paper(new_state);
+    set_led_scissors(new_state);
+}
+
+static inline void blink_all(uint8_t times, uint16_t dwell_ms) {
+    for (; times > 0;times--){
+        set_all_leds(1);
+        _delay_ms(dwell_ms);
+        set_all_leds(0);
+        _delay_ms(dwell_ms);
+    }
+}
+
+static void display_move(rps move) {
+    set_all_leds(false);
+    switch (move) {
+        case ROCK:
+            set_led_rock(true);
+            break;
+        case PAPER:
+            set_led_paper(true);
+            break;
+        case SCISSORS:
+            set_led_scissors(true);
+            break;
+        case START:
+            break;
+    }
+}
+
 int main(void)
 {
     /* Initializes MCU, drivers and middleware */
     SYSTEM_Initialize();
     
+    blink_all(2, 100);
     
-    srandom(42);
-    random();
-
-    volatile rps first_move = simple_model_predict(START, 0.0001);
-    
-    volatile rps second_move = simple_model_predict(ROCK, 0.0001);
+    rps our_move = START;
+    rps opponent_move = START;
+    bool opponent_move_entered = true;
     
     while (1){
-        if (!IO_PA2_get_level()) {
-            IO_PB0_set_level(1);
-            IO_PB1_set_level(1);
-            IO_PB2_set_level(1);
-        } else {
-            IO_PB0_set_level(!IO_PA4_get_level());
-            IO_PB1_set_level(!IO_PA3_get_level());
-            IO_PB2_set_level(!IO_PA1_get_level());
+        if (start_pressed() && opponent_move_entered) {
+            if (opponent_move == START) {
+                // if this is the first move seed the RNG
+                // with the current time (from RTC counter)
+                srandom(RTC.CNT);
+                random();
+            }
+            our_move = simple_model_predict(opponent_move, 0.1);
+            blink_all(3, 200);
+            display_move(our_move);
+            opponent_move_entered = false;
+        } else if (rock_pressed()) {
+            opponent_move = ROCK;
+            opponent_move_entered = true;
+        } else if (paper_pressed()) {
+            opponent_move = PAPER;
+            opponent_move_entered = true;
+        } else if (scissors_pressed()) {
+            opponent_move = SCISSORS;
+            opponent_move_entered = true;
         }
         _delay_ms(10);
     }
