@@ -14,9 +14,9 @@
 #include <math.h>
 
 #include "matrix.h"
-#include "simple_model_weights.h"
+#include "model_weights.h"
 
-#include "simple_model.h"
+#include "model.h"
 
 // WARNING!!! I changed "*link_data_start" in
 //E:\Program Files (x86)\Microchip\MPLABX\v5.10\packs\Atmel\ATtiny_DFP\1.3.238\gcc\dev\attiny1614\device-specs\specs-attiny1614
@@ -107,7 +107,7 @@ void play_against_rps_rnn() {
                 srandom(RTC.CNT);
                 random();
             }
-            our_move = simple_model_predict(opponent_move, 0.1);
+            our_move = model_predict(opponent_move, 0.1);
             blink_all(3, 200);
             display_move(our_move);
             opponent_move_entered = false;
@@ -132,7 +132,7 @@ void play_with_rps_rnn() {
     // seed the RNG with the current time (from RTC counter)
     srandom(RTC.CNT);
     
-    display_move(simple_model_predict(START, 0.1));
+    display_move(model_predict(START, 0.1));
     rps selected_move;
     while (1) {
         // need to save selected move, otherwise it could change between
@@ -143,7 +143,7 @@ void play_with_rps_rnn() {
             // new suggestion is the same as the old one
             set_all_leds(0);
             _delay_ms(100);
-            display_move(simple_model_predict(selected_move, 0.1));
+            display_move(model_predict(selected_move, 0.1));
             // wait until button is released + a bit for bouncing
             while (get_selected_move() != START){}
             _delay_ms(100);

@@ -19,7 +19,7 @@ extern "C" {
         START = 3
     } rps;
     
-    rps simple_model_predict(rps opponent_move, float temperature);
+    rps model_predict(rps opponent_move, float temperature);
 
 
 #ifdef	__cplusplus

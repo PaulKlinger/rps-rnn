@@ -1,7 +1,7 @@
 #include <stdint.h>
-#include "simple_model.h"
+#include "model.h"
 #include "matrix.h"
-#include "simple_model_weights.h"
+#include "model_weights.h"
 
 rps our_last_move = START;
 
@@ -96,7 +96,7 @@ void recurrent_layer(struct float_matrix *input_vec,
 }
 
 
-rps simple_model_predict(rps opponent_move, float temperature) {
+rps model_predict(rps opponent_move, float temperature) {
     set_input(opponent_move);
 
     recurrent_layer(&input_vector, &l1_state_vector, &temp_state_vector,
