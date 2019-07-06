@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include "matrix.h"
 
+// unquantized weights from file "deep_3l_s10_softsign_sim.h5"
+
 const uint8_t l1_W_input_data[] = {
          187, 224, 157, 152,   0, 214, 151, 187, 157, 170, 135,  92,  55,
          237, 228,  76, 130, 252, 200,  82, 203, 161, 255, 167, 172, 157,
