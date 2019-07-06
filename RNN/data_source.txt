@@ -1,0 +1,3 @@
+Rock_Paper_Scissors_Raw.csv contains data from https://roshambo.me/ via https://justincollier.com/life-hacks/how-to-win-rock-paper-scissors/
+
+(This data is augmented with simulated games before training.)
