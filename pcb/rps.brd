@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.3.0">
+<eagle version="9.4.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="no" altdistance="10" altunitdist="mil" altunit="mm"/>
@@ -218,10 +218,10 @@
 <wire x1="1.4" y1="-2.7" x2="1.4" y2="-3.1" width="0.127" layer="21"/>
 <wire x1="-0.7" y1="-3.3" x2="0.6" y2="-3.3" width="0.127" layer="21"/>
 <smd name="A" x="1.978" y="2.286" dx="1.8" dy="0.7" layer="1"/>
-<smd name="SS4" x="-1.15" y="3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS3" x="1.15" y="3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS1" x="-1.15" y="-3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS2" x="1.15" y="-3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS4" x="-1.15" y="3.883" dx="1.716" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS3" x="1.15" y="3.883" dx="1.716" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS1" x="-1.15" y="-3.883" dx="1.616" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS2" x="1.15" y="-3.883" dx="1.616" dy="0.7" layer="1" rot="R90" thermals="no"/>
 <smd name="B" x="1.978" y="-2.286" dx="1.8" dy="0.7" layer="1"/>
 <smd name="COM" x="1.978" y="-0.762" dx="1.8" dy="0.7" layer="1"/>
 <text x="-1.905" y="-1.905" size="0.889" layer="25" ratio="11" rot="R90">&gt;NAME</text>
@@ -231,9 +231,9 @@
 <hole x="0" y="-1.524" drill="0.8128"/>
 <hole x="0" y="1.524" drill="0.8128"/>
 </package>
-<package name="SW2-2.6-3.0X2.5X1.2+0.4MM" urn="urn:adsk.eagle:footprint:8005045/1">
-<smd name="1" x="-1.9" y="0" dx="1.7" dy="1" layer="1" rot="R90"/>
-<smd name="2" x="1.9" y="0" dx="1.7" dy="1" layer="1" rot="R90"/>
+<package name="SW2-2.6-3.0X2.5X1.2+0.4MM" urn="urn:adsk.eagle:footprint:8005045/1" locally_modified="yes">
+<smd name="1" x="-2.4" y="0" dx="1.7" dy="2" layer="1" rot="R90"/>
+<smd name="2" x="2.4" y="0" dx="1.7" dy="2" layer="1" rot="R90"/>
 <wire x1="-1.5" y1="-1.25" x2="1.5" y2="-1.25" width="0.127" layer="21"/>
 <wire x1="1.5" y1="-1.25" x2="1.5" y2="1.25" width="0.127" layer="51"/>
 <wire x1="1.5" y1="1.25" x2="-1.5" y2="1.25" width="0.127" layer="21"/>
@@ -261,10 +261,10 @@
 <wire x1="1.3" y1="0" x2="0.4" y2="-1.1" width="0.127" layer="21" curve="-90"/>
 <wire x1="0.4" y1="-1.1" x2="-0.4" y2="-1.1" width="0.127" layer="21"/>
 <wire x1="-0.4" y1="-1.1" x2="-1.3" y2="0" width="0.127" layer="21" curve="-90"/>
-<smd name="1" x="-2.45" y="1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="3" x="-2.45" y="-1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="4" x="2.45" y="-1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="2" x="2.45" y="1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
+<smd name="1" x="-2.3" y="1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="3" x="-2.3" y="-1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="4" x="2.3" y="-1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="2" x="2.3" y="1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
 <text x="-1.905" y="1.905" size="0.889" layer="25" ratio="11">&gt;NAME</text>
 <text x="-1.905" y="-2.794" size="0.889" layer="27" ratio="11">&gt;VALUE</text>
 <rectangle x1="-2.1" y1="-1.6" x2="2.1" y2="1.6" layer="39"/>
@@ -309,21 +309,18 @@
 <library name="ATTINY1614-SSNR">
 <packages>
 <package name="SOIC127P600X175-14N">
-<circle x="-4.43" y="4.4" radius="0.2" width="0.15" layer="21"/>
-<circle x="-4.43" y="4.4" radius="0.2" width="0.17" layer="51"/>
-<wire x1="-1.95" y1="4.325" x2="1.95" y2="4.325" width="0.127" layer="51"/>
-<wire x1="-1.95" y1="-4.325" x2="1.95" y2="-4.325" width="0.127" layer="51"/>
-<wire x1="-1.95" y1="4.325" x2="1.95" y2="4.325" width="0.127" layer="21"/>
-<wire x1="-1.95" y1="-4.325" x2="1.95" y2="-4.325" width="0.127" layer="21"/>
-<wire x1="-1.95" y1="4.325" x2="-1.95" y2="-4.325" width="0.127" layer="51"/>
-<wire x1="1.95" y1="4.325" x2="1.95" y2="-4.325" width="0.127" layer="51"/>
+<circle x="-3.287" y="4.781" radius="0.2" width="0.17" layer="51"/>
+<wire x1="-1.188" y1="4.325" x2="1.188" y2="4.325" width="0.127" layer="21"/>
+<wire x1="-1.188" y1="-4.325" x2="1.188" y2="-4.325" width="0.127" layer="21"/>
+<wire x1="-1.188" y1="4.325" x2="-1.188" y2="-4.325" width="0.127" layer="21"/>
+<wire x1="1.188" y1="4.325" x2="1.188" y2="-4.325" width="0.127" layer="21"/>
 <wire x1="-3.705" y1="4.575" x2="3.705" y2="4.575" width="0.05" layer="39"/>
 <wire x1="-3.705" y1="-4.575" x2="3.705" y2="-4.575" width="0.05" layer="39"/>
 <wire x1="-3.705" y1="4.575" x2="-3.705" y2="-4.575" width="0.05" layer="39"/>
 <wire x1="3.705" y1="4.575" x2="3.705" y2="-4.575" width="0.05" layer="39"/>
 <text x="-3.5785" y="4.8663" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.2435" y="-5.5995" size="1.27" layer="27" align="top-left">&gt;VALUE</text>
-<smd name="1" x="-2.48" y="3.81" dx="1.95" dy="0.59" layer="1" roundness="50"/>
+<smd name="1" x="-2.48" y="3.81" dx="1.95" dy="0.59" layer="1"/>
 <smd name="2" x="-2.48" y="2.54" dx="1.95" dy="0.59" layer="1" roundness="50"/>
 <smd name="3" x="-2.48" y="1.27" dx="1.95" dy="0.59" layer="1" roundness="50"/>
 <smd name="4" x="-2.48" y="0" dx="1.95" dy="0.59" layer="1" roundness="50"/>
@@ -1795,6 +1792,8 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <contactref element="D1" pad="C"/>
 <contactref element="D2" pad="C"/>
 <contactref element="D3" pad="C"/>
+<via x="12.446" y="23.114" extent="1-16" drill="0.35"/>
+<via x="19.05" y="23.114" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="NEG">
 <contactref element="CR2032_COIN_CELL_BATTERY_HOLDER1" pad="NEG"/>
@@ -1825,8 +1824,10 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <wire x1="19.304" y1="15.8327875" x2="19.304" y2="13.462" width="0.2032" layer="16"/>
 <via x="19.304" y="13.462" extent="1-16" drill="0.35"/>
 <wire x1="13.97" y1="8.256" x2="17.705515625" y2="9.188409375" width="0.2032" layer="1"/>
-<wire x1="17.705515625" y1="9.188409375" x2="18.181321875" y2="9.644896875" width="0.2032" layer="1" curve="59.595302"/>
-<wire x1="18.181321875" y1="9.644896875" x2="19.304" y2="13.462" width="0.2032" layer="1"/>
+<wire x1="17.705515625" y1="9.188409375" x2="18.10650625" y2="9.5894" width="0.1524" layer="1"/>
+<wire x1="18.10650625" y1="9.5894" x2="18.7346875" y2="9.5894" width="0.1524" layer="1"/>
+<wire x1="18.7346875" y1="9.5894" x2="19.304" y2="10.1587125" width="0.1524" layer="1"/>
+<wire x1="19.304" y1="10.1587125" x2="19.304" y2="13.462" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$1">
 <contactref element="U1" pad="10"/>
@@ -1840,7 +1841,7 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <signal name="N$2">
 <contactref element="SW4" pad="2"/>
 <contactref element="U1" pad="11"/>
-<wire x1="20.48006875" y1="18.917728125" x2="20.515" y2="18.96" width="0.2032" layer="1"/>
+<wire x1="20.48006875" y1="18.917728125" x2="20.515" y2="18.81" width="0.2032" layer="1"/>
 <wire x1="12.76" y1="15.24" x2="11.938" y2="15.24" width="0.2032" layer="16"/>
 <wire x1="11.938" y1="15.24" x2="11.176" y2="16.002" width="0.2032" layer="16"/>
 <via x="11.176" y="16.002" extent="1-16" drill="0.35"/>
@@ -1859,7 +1860,7 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <wire x1="16.764" y1="16.256" x2="17.78" y2="15.24" width="0.2032" layer="1" curve="-90"/>
 <contactref element="SW5" pad="2"/>
 <wire x1="17.78" y1="15.24" x2="17.78" y2="11.4016" width="0.2032" layer="1"/>
-<wire x1="17.78" y1="11.4016" x2="17.14" y2="10.668" width="0.2032" layer="1"/>
+<wire x1="17.78" y1="11.4016" x2="17.64" y2="10.668" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$4">
 <contactref element="U1" pad="13"/>
@@ -1867,7 +1868,7 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <wire x1="12.76" y1="17.78" x2="14.224" y2="17.272" width="0.2032" layer="16"/>
 <via x="14.224" y="17.272" extent="1-16" drill="0.35"/>
 <wire x1="14.224" y1="17.272" x2="14.165" y2="17.272" width="0.2032" layer="1"/>
-<wire x1="14.165" y1="17.272" x2="14.165" y2="18.96" width="0.2032" layer="1"/>
+<wire x1="14.165" y1="17.272" x2="14.165" y2="18.81" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$5">
 <contactref element="U1" pad="2"/>
@@ -1883,7 +1884,7 @@ Source: http://www.ledtronics.com/ds/smd-0603/Dstr0093.pdf</description>
 <wire x1="11.76619375" y1="10.881" x2="10.0584" y2="12.58879375" width="0.2032" layer="16"/>
 <wire x1="10.0584" y1="12.58879375" x2="10.0584" y2="14.0716" width="0.2032" layer="16"/>
 <wire x1="7.62" y1="16.51" x2="7.62" y2="18.265" width="0.2032" layer="1"/>
-<wire x1="7.62" y1="18.265" x2="7.815" y2="18.96" width="0.2032" layer="1"/>
+<wire x1="7.62" y1="18.265" x2="7.815" y2="18.81" width="0.2032" layer="1"/>
 </signal>
 <signal name="N$6">
 <contactref element="U$3" pad="1"/>

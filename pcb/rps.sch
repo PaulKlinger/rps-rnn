@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.3.0">
+<eagle version="9.4.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -206,10 +206,10 @@
 <wire x1="1.4" y1="-2.7" x2="1.4" y2="-3.1" width="0.127" layer="21"/>
 <wire x1="-0.7" y1="-3.3" x2="0.6" y2="-3.3" width="0.127" layer="21"/>
 <smd name="A" x="1.978" y="2.286" dx="1.8" dy="0.7" layer="1"/>
-<smd name="SS4" x="-1.15" y="3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS3" x="1.15" y="3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS1" x="-1.15" y="-3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
-<smd name="SS2" x="1.15" y="-3.683" dx="1.016" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS4" x="-1.15" y="3.883" dx="1.716" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS3" x="1.15" y="3.883" dx="1.716" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS1" x="-1.15" y="-3.883" dx="1.616" dy="0.7" layer="1" rot="R90" thermals="no"/>
+<smd name="SS2" x="1.15" y="-3.883" dx="1.616" dy="0.7" layer="1" rot="R90" thermals="no"/>
 <smd name="B" x="1.978" y="-2.286" dx="1.8" dy="0.7" layer="1"/>
 <smd name="COM" x="1.978" y="-0.762" dx="1.8" dy="0.7" layer="1"/>
 <text x="-1.905" y="-1.905" size="0.889" layer="25" ratio="11" rot="R90">&gt;NAME</text>
@@ -219,9 +219,9 @@
 <hole x="0" y="-1.524" drill="0.8128"/>
 <hole x="0" y="1.524" drill="0.8128"/>
 </package>
-<package name="SW2-2.6-3.0X2.5X1.2+0.4MM" urn="urn:adsk.eagle:footprint:8005045/1">
-<smd name="1" x="-1.9" y="0" dx="1.7" dy="1" layer="1" rot="R90"/>
-<smd name="2" x="1.9" y="0" dx="1.7" dy="1" layer="1" rot="R90"/>
+<package name="SW2-2.6-3.0X2.5X1.2+0.4MM" urn="urn:adsk.eagle:footprint:8005045/1" locally_modified="yes">
+<smd name="1" x="-2.4" y="0" dx="1.7" dy="2" layer="1" rot="R90"/>
+<smd name="2" x="2.4" y="0" dx="1.7" dy="2" layer="1" rot="R90"/>
 <wire x1="-1.5" y1="-1.25" x2="1.5" y2="-1.25" width="0.127" layer="21"/>
 <wire x1="1.5" y1="-1.25" x2="1.5" y2="1.25" width="0.127" layer="51"/>
 <wire x1="1.5" y1="1.25" x2="-1.5" y2="1.25" width="0.127" layer="21"/>
@@ -249,10 +249,10 @@
 <wire x1="1.3" y1="0" x2="0.4" y2="-1.1" width="0.127" layer="21" curve="-90"/>
 <wire x1="0.4" y1="-1.1" x2="-0.4" y2="-1.1" width="0.127" layer="21"/>
 <wire x1="-0.4" y1="-1.1" x2="-1.3" y2="0" width="0.127" layer="21" curve="-90"/>
-<smd name="1" x="-2.45" y="1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="3" x="-2.45" y="-1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="4" x="2.45" y="-1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
-<smd name="2" x="2.45" y="1.075" dx="2.3" dy="1.15" layer="1" thermals="no"/>
+<smd name="1" x="-2.3" y="1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="3" x="-2.3" y="-1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="4" x="2.3" y="-1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
+<smd name="2" x="2.3" y="1.075" dx="2" dy="1.15" layer="1" thermals="no"/>
 <text x="-1.905" y="1.905" size="0.889" layer="25" ratio="11">&gt;NAME</text>
 <text x="-1.905" y="-2.794" size="0.889" layer="27" ratio="11">&gt;VALUE</text>
 <rectangle x1="-2.1" y1="-1.6" x2="2.1" y2="1.6" layer="39"/>
@@ -476,21 +476,18 @@
 <library name="ATTINY1614-SSNR">
 <packages>
 <package name="SOIC127P600X175-14N">
-<circle x="-4.43" y="4.4" radius="0.2" width="0.15" layer="21"/>
-<circle x="-4.43" y="4.4" radius="0.2" width="0.17" layer="51"/>
-<wire x1="-1.95" y1="4.325" x2="1.95" y2="4.325" width="0.127" layer="51"/>
-<wire x1="-1.95" y1="-4.325" x2="1.95" y2="-4.325" width="0.127" layer="51"/>
-<wire x1="-1.95" y1="4.325" x2="1.95" y2="4.325" width="0.127" layer="21"/>
-<wire x1="-1.95" y1="-4.325" x2="1.95" y2="-4.325" width="0.127" layer="21"/>
-<wire x1="-1.95" y1="4.325" x2="-1.95" y2="-4.325" width="0.127" layer="51"/>
-<wire x1="1.95" y1="4.325" x2="1.95" y2="-4.325" width="0.127" layer="51"/>
+<circle x="-3.287" y="4.781" radius="0.2" width="0.17" layer="51"/>
+<wire x1="-1.188" y1="4.325" x2="1.188" y2="4.325" width="0.127" layer="21"/>
+<wire x1="-1.188" y1="-4.325" x2="1.188" y2="-4.325" width="0.127" layer="21"/>
+<wire x1="-1.188" y1="4.325" x2="-1.188" y2="-4.325" width="0.127" layer="21"/>
+<wire x1="1.188" y1="4.325" x2="1.188" y2="-4.325" width="0.127" layer="21"/>
 <wire x1="-3.705" y1="4.575" x2="3.705" y2="4.575" width="0.05" layer="39"/>
 <wire x1="-3.705" y1="-4.575" x2="3.705" y2="-4.575" width="0.05" layer="39"/>
 <wire x1="-3.705" y1="4.575" x2="-3.705" y2="-4.575" width="0.05" layer="39"/>
 <wire x1="3.705" y1="4.575" x2="3.705" y2="-4.575" width="0.05" layer="39"/>
 <text x="-3.5785" y="4.8663" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.2435" y="-5.5995" size="1.27" layer="27" align="top-left">&gt;VALUE</text>
-<smd name="1" x="-2.48" y="3.81" dx="1.95" dy="0.59" layer="1" roundness="50"/>
+<smd name="1" x="-2.48" y="3.81" dx="1.95" dy="0.59" layer="1"/>
 <smd name="2" x="-2.48" y="2.54" dx="1.95" dy="0.59" layer="1" roundness="50"/>
 <smd name="3" x="-2.48" y="1.27" dx="1.95" dy="0.59" layer="1" roundness="50"/>
 <smd name="4" x="-2.48" y="0" dx="1.95" dy="0.59" layer="1" roundness="50"/>
@@ -3307,18 +3304,6 @@ Source: AVX .. aphvc.pdf</description>
 </package>
 </packages>
 <packages3d>
-<package3d name="C0402" urn="urn:adsk.eagle:package:23626/1" type="box" library_version="5">
-<description>CAPACITOR</description>
-<packageinstances>
-<packageinstance name="C0402"/>
-</packageinstances>
-</package3d>
-<package3d name="C0504" urn="urn:adsk.eagle:package:23624/1" type="box" library_version="5">
-<description>CAPACITOR</description>
-<packageinstances>
-<packageinstance name="C0504"/>
-</packageinstances>
-</package3d>
 <package3d name="C0603" urn="urn:adsk.eagle:package:23616/2" type="model" library_version="5">
 <description>CAPACITOR</description>
 <packageinstances>
@@ -3341,12 +3326,6 @@ Source: AVX .. aphvc.pdf</description>
 <description>CAPACITOR</description>
 <packageinstances>
 <packageinstance name="C1210"/>
-</packageinstances>
-</package3d>
-<package3d name="C1310" urn="urn:adsk.eagle:package:23620/1" type="box" library_version="5">
-<description>CAPACITOR</description>
-<packageinstances>
-<packageinstance name="C1310"/>
 </packageinstances>
 </package3d>
 <package3d name="C1608" urn="urn:adsk.eagle:package:23621/2" type="model" library_version="5">
@@ -3789,13 +3768,6 @@ Metric Code Size 4532</description>
 <packageinstance name="C1812K"/>
 </packageinstances>
 </package3d>
-<package3d name="C1825K" urn="urn:adsk.eagle:package:23684/1" type="box" library_version="5">
-<description>Ceramic Chip Capacitor KEMET 1825 reflow solder
-Metric Code Size 4564</description>
-<packageinstances>
-<packageinstance name="C1825K"/>
-</packageinstances>
-</package3d>
 <package3d name="C2220K" urn="urn:adsk.eagle:package:23687/2" type="model" library_version="5">
 <description>Ceramic Chip Capacitor KEMET 2220 reflow solderMetric Code Size 5650</description>
 <packageinstances>
@@ -3841,6 +3813,32 @@ Source: AVX .. aphvc.pdf</description>
 <packageinstance name="C01005"/>
 </packageinstances>
 </package3d>
+<package3d name="CAPC1005X60" urn="urn:adsk.eagle:package:23626/2" type="model" library_version="10">
+<description>Chip, 1.00 X 0.50 X 0.60 mm body
+&lt;p&gt;Chip package with body size 1.00 X 0.50 X 0.60 mm&lt;/p&gt;</description>
+<packageinstances>
+<packageinstance name="C0402"/>
+</packageinstances>
+</package3d>
+<package3d name="C0504" urn="urn:adsk.eagle:package:23624/2" type="model" library_version="10">
+<description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C0504"/>
+</packageinstances>
+</package3d>
+<package3d name="C1310" urn="urn:adsk.eagle:package:23620/2" type="model" library_version="10">
+<description>CAPACITOR</description>
+<packageinstances>
+<packageinstance name="C1310"/>
+</packageinstances>
+</package3d>
+<package3d name="C1825K" urn="urn:adsk.eagle:package:23684/2" type="model" library_version="10">
+<description>Ceramic Chip Capacitor KEMET 1825 reflow solder
+Metric Code Size 4564</description>
+<packageinstances>
+<packageinstance name="C1825K"/>
+</packageinstances>
+</package3d>
 </packages3d>
 <symbols>
 <symbol name="C-EU" urn="urn:adsk.eagle:symbol:23120/1" library_version="5">
@@ -3855,7 +3853,7 @@ Source: AVX .. aphvc.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="C-EU" urn="urn:adsk.eagle:component:23793/44" prefix="C" uservalue="yes" library_version="5">
+<deviceset name="C-EU" urn="urn:adsk.eagle:component:23793/45" prefix="C" uservalue="yes" library_version="10">
 <description>&lt;B&gt;CAPACITOR&lt;/B&gt;, European symbol</description>
 <gates>
 <gate name="G$1" symbol="C-EU" x="0" y="0"/>
@@ -3867,7 +3865,7 @@ Source: AVX .. aphvc.pdf</description>
 <connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:23626/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23626/2"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -3881,7 +3879,7 @@ Source: AVX .. aphvc.pdf</description>
 <connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:23624/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23624/2"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -3951,7 +3949,7 @@ Source: AVX .. aphvc.pdf</description>
 <connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:23620/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23620/2"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -4861,7 +4859,7 @@ Source: AVX .. aphvc.pdf</description>
 <connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:23684/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23684/2"/>
 </package3dinstances>
 <technologies>
 <technology name="">
