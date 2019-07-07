@@ -47,6 +47,13 @@ struct float_matrix output_vector = {
     .cols = 3,
 };
 
+float expected_scores_vector_data[3];
+struct float_matrix expected_scores_vector = {
+    .data = expected_scores_vector_data,
+    .rows = 1,
+    .cols = 3,
+};
+
 void set_input(rps opponent_move) {
     // construct new input vector from our and opponents move
     // if this is the first move of the game zero out state vector
@@ -114,25 +121,30 @@ rps model_predict(rps opponent_move, float temperature) {
     //add output bias
     m_add_ff(&output_vector, &b_output, &output_vector);
     
-    //divide logits by temperature...
-    m_mult_fs(&output_vector, 1 / temperature);
-    //... and apply softmax to get normalized probabilities
+    
+    //apply softmax to get normalized probabilities
     m_softmax_f(&output_vector);
     
-    rps predicted_opponent_move = m_sample_f(&output_vector);
+    // calculate the expected score from playing each move
+    // (loss=-1, win=1)
+    // This is better than just playing the counter move to the predicted move,
+    // e.g. when output = (0.1, 0.44, 0.46)
+    // expected move would be scissors but playing rock gives expected score
+    // of 0.02 while playing scissors gives 0.34
     
-    switch (predicted_opponent_move) {
-        case ROCK: // predicted rock, we play paper
-            our_last_move = PAPER;
-            break;
-        case PAPER: // predicted paper, we play scissors
-            our_last_move = SCISSORS;
-            break;
-        case SCISSORS: // predicted scissors, we play rock
-            our_last_move = ROCK;
-            break;
-        case START: // should never happen
-            break;
-    };
+    expected_scores_vector.data[0] = -output_vector.data[1] + output_vector.data[2];
+    expected_scores_vector.data[1] = -output_vector.data[2] + output_vector.data[0];
+    expected_scores_vector.data[2] = -output_vector.data[0] + output_vector.data[1];
+    
+    // we use these expected scores as logits to compute the probability
+    // that we should choose this move
+    // divide logits by temperature...
+    m_mult_fs(&expected_scores_vector, 1 / temperature);
+    
+    // normalize expected score using softmax
+    m_softmax_f(&expected_scores_vector);
+    
+    our_last_move = m_sample_f(&expected_scores_vector);
+    
     return our_last_move;
 };

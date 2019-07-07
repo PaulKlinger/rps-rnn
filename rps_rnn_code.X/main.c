@@ -25,6 +25,8 @@
 // But I'm somewhat uncertain if this is actually correct.
 
 
+#define TEMPERATURE 0.001
+
 //LED pins:
 // rock: PB0
 // paper: PB1
@@ -107,7 +109,7 @@ void play_against_rps_rnn() {
                 srandom(RTC.CNT);
                 random();
             }
-            our_move = model_predict(opponent_move, 0.1);
+            our_move = model_predict(opponent_move, TEMPERATURE);
             blink_all(3, 200);
             display_move(our_move);
             opponent_move_entered = false;
@@ -132,7 +134,7 @@ void play_with_rps_rnn() {
     // seed the RNG with the current time (from RTC counter)
     srandom(RTC.CNT);
     
-    display_move(model_predict(START, 0.1));
+    display_move(model_predict(START, TEMPERATURE));
     rps selected_move;
     while (1) {
         // need to save selected move, otherwise it could change between
@@ -143,7 +145,7 @@ void play_with_rps_rnn() {
             // new suggestion is the same as the old one
             set_all_leds(0);
             _delay_ms(100);
-            display_move(model_predict(selected_move, 0.1));
+            display_move(model_predict(selected_move, TEMPERATURE));
             // wait until button is released + a bit for bouncing
             while (get_selected_move() != START){}
             _delay_ms(100);
