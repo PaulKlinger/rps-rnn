@@ -25,7 +25,7 @@
 // But I'm somewhat uncertain if this is actually correct.
 
 
-#define TEMPERATURE 0.001
+#define TEMPERATURE 0.1
 
 //LED pins:
 // rock: PB0
