@@ -12,5 +12,5 @@ Components (mostly from aliexpress):
 - 3 × [yellow 0805 LED](https://www.aliexpress.com/item/Free-Ship-100PCS-0805-light-emitting-diode-SMD-LED-bead-Red-Yellow-Green-White-Blue-Orange/32871959868.html)
 - 1 × [coin cell battery holder](https://www.aliexpress.com/item/10PCS-Battery-Button-Cell-Holder-Socket-Case-CR2032-battery-holder-2032/32819924096.html)
 - 3 × [smd switch](https://www.aliexpress.com/item/32752150129.html)
-- 1 × [smd switch](https://www.aliexpress.com/item/32752150129.html)
+- 1 × [smd switch](https://www.aliexpress.com/item/32752118872.html)
 - 1 × [smd slide switch](https://www.aliexpress.com/item/32967873133.html)
